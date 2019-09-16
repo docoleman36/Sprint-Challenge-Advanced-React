@@ -1,24 +1,25 @@
 import React from 'react';
 
+import Navbar from './components/Navbar';
 import { Card } from 'semantic-ui-react'
 import './App.scss';
 
 class App extends React.Component {
   state = {
     player: []
-};
+  };
 
-componentDidMount() {
-  fetch('http://localhost:5000/api/players')
-    .then(res => res.json())
-    .then(res => this.setState({player: res}))
-    .catch(err => console.log(err));
-}
+  componentDidMount() {
+    fetch('http://localhost:5000/api/players')
+      .then(res => res.json())
+      .then(res => this.setState({ player: res }))
+      .catch(err => console.log(err));
+  }
 
   render() {
     return (
       <div className="App">
-        <h1>Women's World Cup</h1>
+        <Navbar />
         <div className="card-container">
           {this.state.player.map(x => {
             return (
